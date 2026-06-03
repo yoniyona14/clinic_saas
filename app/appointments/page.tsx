@@ -1,5 +1,5 @@
 'use client'
-
+import Nav from '@/components/Nav'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
@@ -751,68 +751,27 @@ function BookModal({ clinicId, patients, staff, onClose, onSaved }: {
 // ============================================
 // SHARED STYLES + LAYOUT
 // ============================================
-const inputStyle: React.CSSProperties = {
-  width: '100%', padding: '9px 12px',
-  border: `1px solid ${THEME.border}`, borderRadius: '8px',
-  fontSize: '13px', color: THEME.text,
-  background: THEME.white, outline: 'none', boxSizing: 'border-box'
-}
-
-const labelStyle: React.CSSProperties = {
-  display: 'block', fontSize: '11px', fontWeight: '600',
-  color: THEME.muted, textTransform: 'uppercase',
-  letterSpacing: '0.05em', marginBottom: '6px'
-}
-
 function PageLayout({ children, onLogout }: {
   children: React.ReactNode
   onLogout: () => void
 }) {
   return (
-    <div style={{ minHeight: '100vh', background: THEME.bg, fontFamily: 'sans-serif' }}>
-      <nav style={{
-        background: THEME.white, borderBottom: `1px solid ${THEME.border}`,
-        padding: '0 24px', display: 'flex', alignItems: 'center',
-        justifyContent: 'space-between', height: '60px',
-        position: 'sticky', top: 0, zIndex: 10
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{
-            width: '32px', height: '32px', background: THEME.primary,
-            borderRadius: '8px', display: 'flex',
-            alignItems: 'center', justifyContent: 'center', fontSize: '16px'
-          }}>
-            🦷
-          </div>
-          <span style={{ fontWeight: '700', color: THEME.text, fontSize: '15px' }}>
-            DentaRecord
-          </span>
-        </div>
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-          {[
-            { label: 'Analytics',    href: '/dashboard'    },
-            { label: 'Patients',     href: '/patients'     },
-            { label: 'Appointments', href: '/appointments' },
-            { label: 'Expenses',     href: '/expenses'     },
-          ].map(link => (
-            <a key={link.href} href={link.href} style={{
-              color: link.href === '/appointments' ? THEME.primary : THEME.muted,
-              fontSize: '14px', textDecoration: 'none',
-              fontWeight: link.href === '/appointments' ? '600' : '400'
-            }}>
-              {link.label}
-            </a>
-          ))}
-          <button onClick={onLogout} style={{
-            background: 'none', border: `1px solid ${THEME.border}`,
-            color: THEME.muted, fontSize: '13px',
-            cursor: 'pointer', padding: '6px 12px', borderRadius: '8px'
-          }}>
-            Sign out
-          </button>
-        </div>
-      </nav>
+    <div style={{ minHeight: '100vh', background: '#f9fafb', fontFamily: 'sans-serif' }}>
+      <Nav activePage="/appointments" />
       {children}
     </div>
   )
+}
+
+const inputStyle: React.CSSProperties = {
+  width: '100%', padding: '9px 12px',
+  border: '1px solid #e5e7eb', borderRadius: '8px',
+  fontSize: '13px', color: '#111827',
+  background: '#f9fafb', outline: 'none', boxSizing: 'border-box'
+}
+
+const labelStyle: React.CSSProperties = {
+  display: 'block', fontSize: '11px', fontWeight: '600',
+  color: '#6b7280', textTransform: 'uppercase',
+  letterSpacing: '0.05em', marginBottom: '6px'
 }

@@ -57,6 +57,9 @@ export default function PatientsPage() {
       if (!staff) { setLoading(false); return }
       setClinicId(staff.clinic_id)
 
+setClinicId(staff.clinic_id)
+console.log('clinicId set to:', staff.clinic_id)
+
       const { data } = await supabase
         .from('patients')
         .select('*')
@@ -416,51 +419,16 @@ const labelStyle: React.CSSProperties = {
   letterSpacing: '0.05em', marginBottom: '6px'
 }
 
+import Nav from '@/components/Nav'
+
 function PageLayout({ children, onLogout, activePage }: {
   children: React.ReactNode
   onLogout: () => void
   activePage: string
 }) {
-  const links = [
-    { label: 'Analytics',    href: '/dashboard'    },
-    { label: 'Patients',     href: '/patients'     },
-    { label: 'Appointments', href: '/appointments' },
-    { label: 'Expenses',     href: '/expenses'     },
-  ]
-
   return (
-    <div style={{ minHeight: '100vh', background: THEME.bg, fontFamily: 'sans-serif' }}>
-      <nav style={{
-        background: THEME.white, borderBottom: `1px solid ${THEME.border}`,
-        padding: '0 24px', display: 'flex', alignItems: 'center',
-        justifyContent: 'space-between', height: '60px',
-        position: 'sticky', top: 0, zIndex: 10
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: '32px', height: '32px', background: THEME.primary, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>
-            🦷
-          </div>
-          <span style={{ fontWeight: '700', color: THEME.text, fontSize: '15px' }}>DentaRecord</span>
-        </div>
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-          {links.map(link => (
-            <a key={link.href} href={link.href} style={{
-              color: activePage === link.href ? THEME.primary : THEME.muted,
-              fontSize: '14px', textDecoration: 'none',
-              fontWeight: activePage === link.href ? '600' : '400'
-            }}>
-              {link.label}
-            </a>
-          ))}
-          <button onClick={onLogout} style={{
-            background: 'none', border: `1px solid ${THEME.border}`,
-            color: THEME.muted, fontSize: '13px',
-            cursor: 'pointer', padding: '6px 12px', borderRadius: '8px'
-          }}>
-            Sign out
-          </button>
-        </div>
-      </nav>
+    <div style={{ minHeight: '100vh', background: '#f9fafb', fontFamily: 'sans-serif' }}>
+      <Nav activePage={activePage} />
       {children}
     </div>
   )
