@@ -1,8 +1,3 @@
-// ============================================
-// ROOT LAYOUT — required by Next.js
-// Wraps every page in the app
-// ============================================
-
 import type { Metadata } from 'next'
 import './globals.css'
 

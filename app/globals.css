@@ -1,0 +1,18 @@
+/* ============================================
+   GLOBAL STYLES — Tailwind v4
+   In v4 you just import tailwindcss directly.
+   No more @tailwind base/components/utilities
+   ============================================ */
+
+@import "tailwindcss";
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Clean body defaults */
+body {
+  background-color: #f9fafb;
+  color: #111827;
+}

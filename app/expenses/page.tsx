@@ -401,7 +401,7 @@ console.log('receptionist mode ON')
 
     </PageLayout>
   )
-}
+} 
 
 // ============================================
 // ADD EXPENSE MODAL
