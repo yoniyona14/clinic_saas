@@ -96,7 +96,7 @@ export default function HomePage() {
 
   return (
     <div style={{ minHeight:'100vh', background:T.bg, fontFamily:'sans-serif' }}>
-      <Nav active="/home" />
+      <Nav activePage="/home" />
 
       <div style={{ maxWidth:'1100px', margin:'0 auto', padding:'32px 24px' }}>
 
